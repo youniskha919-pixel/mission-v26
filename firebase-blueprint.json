@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile in Mission 26 Esports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "avatar": { "type": "string" },
+        "coins": { "type": "integer" },
+        "tier": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "username", "coins"]
+    },
+    "MatchmakingRoom": {
+      "title": "MatchmakingRoom",
+      "description": "Virtual room and queue for real-time multiplayer matchmaking",
+      "type": "object",
+      "properties": {
+        "roomId": { "type": "string" },
+        "gameType": { "type": "string" },
+        "hostUserId": { "type": "string" },
+        "hostUsername": { "type": "string" },
+        "hostName": { "type": "string" },
+        "hostAvatar": { "type": "string" },
+        "guestUserId": { "type": "string" },
+        "guestUsername": { "type": "string" },
+        "guestName": { "type": "string" },
+        "guestAvatar": { "type": "string" },
+        "status": { "type": "string" },
+        "isPrivate": { "type": "boolean" },
+        "roomCode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["roomId", "gameType", "hostUserId", "hostUsername", "status", "roomCode"]
+    },
+    "MatchReplay": {
+      "title": "MatchReplay",
+      "description": "Saved game replay sequence with turn analysis",
+      "type": "object",
+      "properties": {
+        "replayId": { "type": "string" },
+        "userId": { "type": "string" },
+        "gameType": { "type": "string" },
+        "opponentName": { "type": "string" },
+        "result": { "type": "string" },
+        "score": { "type": "string" },
+        "totalTurns": { "type": "integer" },
+        "durationSeconds": { "type": "integer" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "framesJson": { "type": "string" },
+        "coachNotes": { "type": "string" },
+        "strategyGrade": { "type": "string" }
+      },
+      "required": ["replayId", "userId", "gameType", "opponentName", "result", "totalTurns"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/matchmaking_rooms/{roomId}": {
+      "schema": "MatchmakingRoom",
+      "description": "Real-time matchmaking queues and virtual rooms"
+    },
+    "/users/{userId}/replays/{replayId}": {
+      "schema": "MatchReplay",
+      "description": "Saved match replays for a user"
+    }
+  }
+}

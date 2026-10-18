@@ -1,0 +1,7 @@
+{
+  "name": "Mission 26",
+  "description": "Esports gaming, real-time matchmaking, 16 Guti & classic games, leaderboards, wallet cash-out, and reward system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
